@@ -12,4 +12,8 @@
 .img2{
     border-top: 3px solid rgb(29, 209, 0);
 }
+.seat-count{
+    display: flex;
+    justify-content: space-around;
+}
 
