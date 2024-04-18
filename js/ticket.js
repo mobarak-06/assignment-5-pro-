@@ -33,6 +33,13 @@ function handleClick(event){
            return;
        }
 
+       const secondCart = getConvertedValue('current-seat');
+       if (secondCart +1 === 4) {
+        const couponBtn = document.getElementById('coupon-btn');
+        couponBtn.removeAttribute('disabled');
+        
+       }
+
        div.appendChild(p);
        div.appendChild(p2);
        div.appendChild(p3);
@@ -45,9 +52,16 @@ function handleClick(event){
        const updatedSeat = currentSeat +1;
        document.getElementById('current-seat').innerText = updatedSeat;
 
+       const leftSeat = getConvertedValue('seat-left');
+       const updatedLeftSeat = leftSeat -1;
+       document.getElementById('seat-left').innerText = updatedLeftSeat;
+
        const totalPrice = getConvertedValue('total-price');
        const updatedTotalPrice = totalPrice + convertedPrice;
        document.getElementById('total-price').innerText = updatedTotalPrice;
+
+       
+       
 
        getGrandTotalCost();
        updateCouponCode();
@@ -96,4 +110,14 @@ function hideByTicket(){
     showBackground('main2')
 
 }
+
+const nextBtn = document.getElementById('number');
+    //    console.log(nextBtn);
+       nextBtn.addEventListener('keyup', function(e) {
+        console.log(e.target.value);
+           if (e.target.value.length >= 1) {
+               const next = document.getElementById('next-btn');
+               next.removeAttribute('disabled');
+           }
+       });
 
