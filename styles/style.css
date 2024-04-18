@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 .Raleway{
     font-family: "Raleway"
 }
 .inter{
     font-family: "Inter"
+}
+
+.roboto{
+    font-family: "Roboto" 
 }
 .img{
     border-bottom: 3px solid rgb(29, 209, 0);

@@ -18,9 +18,7 @@ function handleClick(event){
        p2.innerText = busClass;
        p3.innerText = convertedPrice;
 
-       div.appendChild(p);
-       div.appendChild(p2);
-       div.appendChild(p3);
+       
 
        busDetails.appendChild(div);
 
@@ -35,6 +33,10 @@ function handleClick(event){
            return;
        }
 
+       div.appendChild(p);
+       div.appendChild(p2);
+       div.appendChild(p3);
+
        event.style.backgroundColor = '#1DD100'
          
        
@@ -47,11 +49,51 @@ function handleClick(event){
        const updatedTotalPrice = totalPrice + convertedPrice;
        document.getElementById('total-price').innerText = updatedTotalPrice;
 
-       const grandTotal = getConvertedValue('grand-total');
-       const updatedGrandTotal = totalPrice + convertedPrice;
-       document.getElementById('grand-total').innerText = updatedTotalPrice;
-
-      
+       getGrandTotalCost();
+       updateCouponCode();
+   
       
 }
  
+function updateCouponCode(status){
+    const totalCost = getConvertedValue('total-price');
+    const couponBtn = document.getElementById('coupon-btn')
+    console.log(totalCost);
+    if (status === undefined) {
+        getGrandTotalCost()
+    } else {
+        const couponCode = document.getElementById('coupon-code').value;
+        if (couponCode === 'NEW15') {
+            const discount = totalCost * 0.15 
+            const discountedPrice = totalCost - discount ;
+            document.getElementById('grand-total').innerText = discountedPrice;
+            couponBtn.setAttribute('disabled',true);
+        } 
+        else if(couponCode === 'Couple 20'){
+            const discount = totalCost * 0.20 
+            const discountedPrice = totalCost - discount ;
+            document.getElementById('grand-total').innerText = discountedPrice;
+            couponBtn.setAttribute('disabled',true);
+        }
+        else{
+            alert('please inter a valid couponCode');
+        }
+         
+    }
+}
+
+function showNextButton(){
+    hideBackground('main')
+    hideBackground('main2')
+    hideBackground('footer')
+    hideBackground('nav')
+    showBackground('success')
+
+}
+
+function hideByTicket(){
+    hideBackground('main')
+    showBackground('main2')
+
+}
+
